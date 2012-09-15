@@ -6,16 +6,17 @@
 </head>
 <body>
   <h1>Super Upload</h1>
-  <form id="upload" action="save">
+  <form id="upload">
     <input type="file" name="file" id="file"/>
     <p id="uploadStatus"></p>
     <a id="uploadFile"></a>
     
     <textarea name="description" id="description" rows="7" cols="43"></textarea>
     <br>
-    <input type="submit"/>
+    <input type="submit" id=save value="Save"/>
 
     <script src="js/uploader.js"></script>
+    <script src="js/save.js"></script>
   </div>
 </body>
 </html>
