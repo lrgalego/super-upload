@@ -23,3 +23,5 @@ FormSave.prototype.post = function(formData) {
 FormSave.prototype.onLoad = function(data){
   console.log(data);
 }
+
+new FormSave();

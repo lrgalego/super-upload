@@ -8,12 +8,13 @@
   <h1>Super Upload</h1>
   <form id="upload">
     <input type="file" name="file" id="file"/>
+    <input type="hidden" id="uuid" name="uuid" value="<%= @uuid %>"/>
     <p id="uploadStatus"></p>
     <a id="uploadFile"></a>
     
     <textarea name="description" id="description" rows="7" cols="43"></textarea>
     <br>
-    <input type="submit" id=save value="Save"/>
+    <input type="button" id=save value="Save"/>
 
     <script src="js/uploader.js"></script>
     <script src="js/save.js"></script>
