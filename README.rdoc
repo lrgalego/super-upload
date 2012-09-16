@@ -1,0 +1,19 @@
+== Super Upload
+An example of an async upload with feedback.
+You need a ruby installation with the gem command.
+
+== First run
+
+    rake install
+
+== To run use
+
+    rake
+
+== To stop
+
+    rake stop
+ 
+== To test
+
+    rake test
