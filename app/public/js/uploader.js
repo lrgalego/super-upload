@@ -14,7 +14,7 @@ Uploader.prototype.uploadFile = function(){
   formData.append('file', fileInfo);
 
   var uuid = document.getElementById("uuid");
-  formData.append('uuid', uuid);  
+  formData.append('uuid', uuid.value);  
 
   this.upload(formData); 
 };
