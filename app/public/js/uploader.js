@@ -26,6 +26,7 @@ Uploader.prototype.upload = function(formData){
     url: '/upload',
     formData: formData,
     beforeSend: function(xhr){
+      xhr.upload.addEventListener('loadstart', that.uploadStart, false);
       xhr.upload.addEventListener('progress', that.uploadProgress, false);
       return xhr;
     }, 
@@ -35,12 +36,17 @@ Uploader.prototype.upload = function(formData){
   });
 }
 
+Uploader.prototype.uploadStart = function(event){
+  document.getElementById('uploadStatus').innerHTML = "Status 0%";
+  document.getElementById('uploadFile').innerHTML = "";
+}
+
 Uploader.prototype.uploadProgress = function(event){
-  document.getElementById('uploadStatus').innerHTML = (event.loaded / event.total * 100) + "%";
+  document.getElementById('uploadStatus').innerHTML = "Status " + (event.loaded / event.total * 100) + "%";
 }
 
 Uploader.prototype.uploadFinished = function(data){
-  document.getElementById('uploadStatus').innerHTML = "100%";
+  document.getElementById('uploadStatus').innerHTML = "Status 100%";
   document.getElementById('uploadFile').href = data.path;
   document.getElementById('uploadFile').innerHTML = data.path;
 }
