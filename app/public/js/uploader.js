@@ -3,6 +3,7 @@ var Uploader = function(){
 
   this.file = document.getElementById("file");
   file.onchange = function(){
+    document.getElementById("save").removeAttribute("disabled");
     that.uploadFile();
   }
 };
@@ -25,6 +26,7 @@ Uploader.prototype.upload = function(formData){
     url: '/upload',
     formData: formData,
     beforeSend: function(xhr){
+      xhr.upload.addEventListener('progress', that.uploadProgress, false);
       return xhr;
     }, 
     afterSend: function(data){
@@ -33,8 +35,14 @@ Uploader.prototype.upload = function(formData){
   });
 }
 
+Uploader.prototype.uploadProgress = function(event){
+  document.getElementById('uploadStatus').innerHTML = (event.loaded / event.total * 100) + "%";
+}
+
 Uploader.prototype.uploadFinished = function(data){
-  console.log(data);
+  document.getElementById('uploadStatus').innerHTML = "100%";
+  document.getElementById('uploadFile').href = data.path;
+  document.getElementById('uploadFile').innerHTML = data.path;
 }
 
 new Uploader();

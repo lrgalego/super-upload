@@ -8,16 +8,18 @@ class SuperUploader < Sinatra::Base
   end
 
   post '/upload' do
-    save_file params[:uuid], params[:file][:filename], params[:file][:tempfile]
+    content_type :json
 
+    save_file params[:uuid], params[:file][:filename], params[:file][:tempfile]
     {
       path: delivery_file_path(params[:uuid], params[:file][:filename])
     }.to_json
   end
 
   post '/save' do
-    save_description params[:uuid], params[:description]
+    content_type :json    
 
+    save_description params[:uuid], params[:description]
     {
       path: delivery_file_path(params[:uuid], params[:file][:filename]), 
       title: params[:file][:name]

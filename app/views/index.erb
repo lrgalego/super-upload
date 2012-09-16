@@ -9,12 +9,13 @@
   <form id="upload">
     <input type="file" name="file" id="file"/>
     <input type="hidden" id="uuid" name="uuid" value="<%= @uuid %>"/>
-    <p id="uploadStatus"></p>
+    <div id="uploadStatus"></div>
     <a id="uploadFile"></a>
+    <br>
     
     <textarea name="description" id="description" rows="7" cols="43"></textarea>
     <br>
-    <input type="button" id=save value="Save"/>
+    <input type="button" id="save" value="Save" disabled="disabled"/>
 
     <script src="js/namespace.js"></script>
     <script src="js/ajax.js"></script>
