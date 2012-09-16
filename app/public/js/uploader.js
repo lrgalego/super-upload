@@ -20,14 +20,20 @@ Uploader.prototype.uploadFile = function(){
 };
 
 Uploader.prototype.upload = function(formData){
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener('load', this.onLoad, false);
-
-  xhr.open("POST", "/upload", true);
-  xhr.send(formData);
+  var that = this;
+  SuperUpload.ajax({
+    url: '/upload',
+    formData: formData,
+    beforeSend: function(xhr){
+      return xhr;
+    }, 
+    afterSend: function(data){
+      that.uploadFinished(data);
+    }
+  });
 }
 
-Uploader.prototype.onLoad = function(data){
+Uploader.prototype.uploadFinished = function(data){
   console.log(data);
 }
 

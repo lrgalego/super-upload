@@ -13,11 +13,14 @@ FormSave.prototype.submitForm = function() {
 };
 
 FormSave.prototype.post = function(formData) {
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener('load', this.onLoad, false);
-
-  xhr.open('POST', 'save', true);
-  xhr.send(formData);
+  var that = this;
+  SuperUpload.ajax({
+    url: '/save',
+    formData: formData,
+    afterSend: function(data){
+      that.onLoad(data);
+    }
+  });
 }
 
 FormSave.prototype.onLoad = function(data){
