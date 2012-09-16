@@ -8,7 +8,7 @@ require 'tempfile'
 
 class TestSave < MiniTest::Unit::TestCase
 
-  def setup
+  def teardown
     `rm -rf app/public/uploaded/*`
   end
 
